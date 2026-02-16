@@ -1,0 +1,52 @@
+.landing-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.landing-logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0a0a0a;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  letter-spacing: -0.02em;
+}
+
+.landing-logo:hover {
+  color: #333;
+  transform: scale(1.02);
+}
+
+.landing-nav {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+}
+
+.landing-nav-link {
+  padding: 0.6rem 1rem;
+  color: #0a0a0a;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 10px;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.landing-nav-link:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 0, 0, 0.05);
+  color: #0a0a0a;
+}

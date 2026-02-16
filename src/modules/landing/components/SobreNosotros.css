@@ -1,0 +1,58 @@
+.sobre {
+  padding: 6rem 2rem;
+  background: #fafafa;
+}
+
+.sobre-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sobre-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sobre-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  color: #0a0a0a;
+  text-align: center;
+  margin: 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.sobre-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sobre-block {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sobre-block:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.sobre-block h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #0a0a0a;
+  margin: 0 0 0.75rem;
+}
+
+.sobre-block p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #444;
+  margin: 0;
+}
