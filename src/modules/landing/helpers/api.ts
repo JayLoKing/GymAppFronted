@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 const API_BASE = 'http://localhost:3001/api';
 
 export interface Machine {
@@ -8,9 +10,21 @@ export interface Machine {
 }
 
 export async function fetchMachines(): Promise<Machine[]> {
-  const response = await fetch(`${API_BASE}/machines`);
-  if (!response.ok) {
+  try {
+    const { data } = await axios.get<Machine[]>(`${API_BASE}/machines`);
+    return data;
+  } catch (error) {
+    console.error('Error fetching machines:', error);
     throw new Error('Error al cargar las máquinas');
   }
-  return response.json();
+}
+
+export async function fetchMachineCount(): Promise<{ total: number; displayCount: string }> {
+  try {
+    const { data } = await axios.get<{ total: number; displayCount: string }>(`${API_BASE}/machines/count`);
+    return data;
+  } catch (error) {
+    console.error('Error fetching machine count:', error);
+    return { total: 0, displayCount: '50+' }; // Default fallback
+  }
 }

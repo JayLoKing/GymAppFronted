@@ -1,6 +1,18 @@
+import { useState, useEffect } from 'react';
+import { fetchMachineCount } from '../helpers/api';
 import './HeroSection.css';
 
 export function HeroSection() {
+  const [machineCount, setMachineCount] = useState<string>('50+');
+
+  useEffect(() => {
+    fetchMachineCount().then((data) => {
+      if (data && data.displayCount) {
+        setMachineCount(data.displayCount);
+      }
+    });
+  }, []);
+
   return (
     <section className="hero" id="inicio">
       <div className="hero-bg" />
@@ -20,7 +32,7 @@ export function HeroSection() {
       </div>
       <div className="hero-stats">
         <div className="hero-stat">
-          <span className="hero-stat-number">50+</span>
+          <span className="hero-stat-number">{machineCount}</span>
           <span className="hero-stat-label">Máquinas</span>
         </div>
         <div className="hero-stat">

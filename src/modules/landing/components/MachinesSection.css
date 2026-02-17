@@ -61,9 +61,17 @@
   font-weight: 500;
 }
 
-.legend-item.status-available { color: #166534; }
-.legend-item.status-occupied { color: #b91c1c; }
-.legend-item.status-out { color: #0a0a0a; }
+.legend-item.status-available {
+  color: #008000;
+}
+
+.legend-item.status-occupied {
+  color: #ff0000;
+}
+
+.legend-item.status-out {
+  color: #000000;
+}
 
 .machines-grid {
   display: grid;
@@ -86,13 +94,15 @@
 }
 
 .machine-card.status-available {
-  border-left: 4px solid #166534;
+  border-left: 4px solid #008000;
 }
+
 .machine-card.status-occupied {
-  border-left: 4px solid #b91c1c;
+  border-left: 4px solid #ff0000;
 }
+
 .machine-card.status-out {
-  border-left: 4px solid #0a0a0a;
+  border-left: 4px solid #000000;
 }
 
 .machine-icon {
@@ -107,15 +117,19 @@
   transform: scale(1.1);
 }
 
+/* Emoji Filters for Colors */
 .machine-card.status-available .machine-icon {
-  filter: sepia(1) saturate(8) hue-rotate(75deg) brightness(0.95);
+  /* Green: sepia + hue-rotate to green */
+  filter: sepia(1) saturate(8) hue-rotate(80deg) brightness(0.9);
 }
 
 .machine-card.status-occupied .machine-icon {
-  filter: sepia(1) saturate(8) hue-rotate(-45deg) brightness(0.95);
+  /* Red: sepia + hue-rotate to red */
+  filter: sepia(1) saturate(8) hue-rotate(-50deg) brightness(0.95);
 }
 
 .machine-card.status-out .machine-icon {
+  /* Black: grayscale + brightness 0 */
   filter: grayscale(1) brightness(0);
 }
 
@@ -129,13 +143,28 @@
   animation: pulse 2s ease-in-out infinite;
 }
 
-.machine-card.status-available .machine-status-dot { background: #166534; }
-.machine-card.status-occupied .machine-status-dot { background: #b91c1c; }
-.machine-card.status-out .machine-status-dot { background: #0a0a0a; }
+.machine-card.status-available .machine-status-dot {
+  background: #008000;
+}
+
+.machine-card.status-occupied .machine-status-dot {
+  background: #ff0000;
+}
+
+.machine-card.status-out .machine-status-dot {
+  background: #000000;
+}
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
 }
 
 .machine-name {
@@ -150,9 +179,17 @@
   font-weight: 500;
 }
 
-.machine-card.status-available .machine-status-label { color: #166534; }
-.machine-card.status-occupied .machine-status-label { color: #b91c1c; }
-.machine-card.status-out .machine-status-label { color: #0a0a0a; }
+.machine-card.status-available .machine-status-label {
+  color: #008000;
+}
+
+.machine-card.status-occupied .machine-status-label {
+  color: #ff0000;
+}
+
+.machine-card.status-out .machine-status-label {
+  color: #000000;
+}
 
 .machines-loading,
 .machines-error,
@@ -173,7 +210,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .machines-error-icon {
