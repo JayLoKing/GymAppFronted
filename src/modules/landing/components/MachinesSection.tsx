@@ -15,19 +15,16 @@ const statusLabels: Record<string, { label: string; class: string }> = {
   mantenimiento: { label: 'Mantenimiento', class: 'status-out' },
   'en uso': { label: 'En uso', class: 'status-occupied' },
   'fuera de servicio': { label: 'Mantenimiento', class: 'status-out' },
-
-  // Case insensitive handling via lowercase key
 };
 
 export function MachinesSection() {
   const { machines, loading, error } = useMachines();
 
-  // Helper to normalize status key
   const getStatus = (status: string) => {
     const key = status.toLowerCase();
     return statusLabels[key] || {
       label: status,
-      class: 'status-out', // Default to black (maintenance/unknown) instead of green to avoid misleading availability
+      class: 'status-out',
     };
   };
 
@@ -65,22 +62,26 @@ export function MachinesSection() {
                 <span className="legend-item status-out">● Mantenimiento</span>
               </div>
             </div>
+
             <div className="machines-grid">
               {machines.length === 0 ? (
                 <p className="machines-empty">No hay máquinas registradas</p>
               ) : (
                 machines.map((machine) => {
                   const status = getStatus(machine.status);
+
                   return (
                     <div
-                      key={machine.machine_id}
+                      key={machine.machineId} // CAMBIO: machine_id -> machineId
                       className={`machine-card ${status.class}`}
                     >
                       <span className="machine-icon">
-                        {getMachineIcon(machine.name_machine, machine.type_machine)}
+                        {/* CAMBIO: name_machine -> nameMachine, type_machine -> typeMachine */}
+                        {getMachineIcon(machine.nameMachine, machine.typeMachine)}
                       </span>
                       <div className="machine-status-dot" />
-                      <h3 className="machine-name">{machine.name_machine}</h3>
+                      {/* CAMBIO: name_machine -> nameMachine */}
+                      <h3 className="machine-name">{machine.nameMachine}</h3>
                       <span className="machine-status-label">{status.label}</span>
                     </div>
                   );

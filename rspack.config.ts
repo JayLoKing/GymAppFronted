@@ -14,6 +14,11 @@ export default defineConfig({
   resolve: {
     extensions: ['...', '.ts', '.tsx', '.jsx'],
   },
+  devServer: {
+    port: 8081,
+    historyApiFallback: true,
+    hot: true,
+  },
   module: {
     rules: [
       {

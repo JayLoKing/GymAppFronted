@@ -1,21 +1,22 @@
-import { useState, useEffect } from 'react';
-import { fetchMachines } from '../helpers/api';
-import type { Machine } from '../helpers/api';
-
-
+import { useQuery } from '@tanstack/react-query';
+import type { MachineInfoResponseDto } from '../models/machine-response.dto';
+import { fetchAllMachinesAsync } from '../services/machine-info.service';
 
 export function useMachines() {
-  const [machines, setMachines] = useState<Machine[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const { data, isLoading, isError, error } = useQuery<MachineInfoResponseDto[], Error>({
+    queryKey: ['machines'],
+    queryFn: async () => {
+      const { call } = fetchAllMachinesAsync();
+      const response = await call;
+      return response.data;
+    },
+    staleTime: 1000 * 60 * 5,
+    refetchOnWindowFocus: false,
+  });
 
-  useEffect(() => {
-    setLoading(true);
-    fetchMachines()
-      .then(setMachines)
-      .catch((err) => setError(err instanceof Error ? err.message : 'Error'))
-      .finally(() => setLoading(false));
-  }, []);
-
-  return { machines, loading, error };
+  return {
+    machines: data || [],
+    loading: isLoading,
+    error: isError ? (error as Error).message : null,
+  };
 }

@@ -11,7 +11,7 @@ export function LandingHeader() {
   return (
     <header className="landing-header">
       <a href="#inicio" className="landing-logo">
-        GymApp
+        IronForge
       </a>
       <nav className="landing-nav">
         {menuItems.map((item) => (
